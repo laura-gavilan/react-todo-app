@@ -1,0 +1,22 @@
+.favorites-container {
+    margin-bottom: 2rem;
+}
+
+.favorites-title {
+    font-size: 22px;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+.favorites-empty {
+    font-style: italic;
+    color: #888;
+    padding: 10px;
+    text-align: center;
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

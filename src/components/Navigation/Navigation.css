@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: #282c34;
+  padding: 10px;
+  gap: 10px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background-color: #666;
+}
+
+.active {
+  background-color: #61dafb;
+  color: black;
+}

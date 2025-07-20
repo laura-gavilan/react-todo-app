@@ -1,0 +1,22 @@
+.todo-list-container {
+    margin-bottom: 2rem;
+}
+
+.todo-list-title {
+    font-size: 22px;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+.todo-list-empty {
+    font-style: italic;
+    color: #888;
+    padding: 10px;
+    text-align: center;
+}
+
+.todo-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
