@@ -1,5 +1,5 @@
 export const Tabs = {
-    TODOS: "Lista de Tareas",
+    TODOS: "Lista de tareas",
     FAVORITES: "Favoritas",
-    NEW_TODO: "Crear Tarea",
-}
+    NEW_TODO: "Crear tareas",
+};
