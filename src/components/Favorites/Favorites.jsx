@@ -9,7 +9,7 @@ export const Favorites = ({ todos, onToggleTodo, onDeleteTodo, onToggleFavorite 
         <div className="favorites-container">
             <h2 className="favorites-title">⭐ Favoritos</h2>
 
-            {!favorites?.length === 0 &&
+            {favorites?.length === 0 &&
                 <p className="favorites-empty">No hay favoritos que mostrar</p>}
 
             {favorites.length > 0 && (
