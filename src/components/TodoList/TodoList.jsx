@@ -10,10 +10,13 @@ export const TodoList = (props) => {
 
             {props.todos.map(todo => {
                 return (
-                    <TodoItem  
-                    key={todo.id} 
-                    toggleTodo={props.toggleTodo} 
-                    todo={todo} />
+                    <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        onToggleTodo={props.onToggleTodo}
+                        onDeleteTodo={props.onDeleteTodo}
+                        onToggleFavorite={props.onToggleFavorite}
+                    />
                 )
             })}
         </div>
