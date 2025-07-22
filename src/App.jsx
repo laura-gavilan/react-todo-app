@@ -5,45 +5,54 @@ import { Tabs } from "./components/Navigation/Tabs";
 import { TodoForm } from "./components/TodoForm/TodoForm";
 import { TodoList } from "./components/TodoList/TodoList";
 import { Favorites } from "./components/Favorites/Favorites";
+import { storage } from "./helpers/storage";
 
-const INITIAL_TODOS = [
-    {
-        text: "Crear proyecto CV",
-        completed: false,
-        favorite: false,
-        id: 1753202805259,
-        done: false
-    },
-    {
-        text: "Programar React",
-        completed: false,
-        favorite: false,
-        id: 1753202846088,
-        done: false
-    },
-    {
-        text: "Darle caña ",
-        completed: false,
-        favorite: false,
-        id: 1753202858485,
-        done: false
-    },
-    {
-        text: "Hacer la comida",
-        completed: false,
-        favorite: false,
-        id: 1753202884961,
-        done: false
-    }
-]
+const STORAGE_TODOS_KEY = "todos";
+
+// const INITIAL_TODOS = [
+//     {
+//         text: "Crear proyecto CV",
+//         completed: false,
+//         favorite: false,
+//         id: 1753202805259,
+//         done: false
+//     },
+//     {
+//         text: "Programar React",
+//         completed: false,
+//         favorite: false,
+//         id: 1753202846088,
+//         done: false
+//     },
+//     {
+//         text: "Darle caña ",
+//         completed: false,
+//         favorite: false,
+//         id: 1753202858485,
+//         done: false
+//     },
+//     {
+//         text: "Hacer la comida",
+//         completed: false,
+//         favorite: false,
+//         id: 1753202884961,
+//         done: false
+//     }
+// ]
+
+const INITIAL_TODOS = storage.get("todos");
 
 
 export const App = () => {
     const [activeTab, setActiveTab] = useState(Tabs.TODOS);
-    const [todos, setTodos] = useState(INITIAL_TODOS);
+    const [todos, setTodos] = useState(INITIAL_TODOS || []);
 
     const addTodo = (newTodo) => {
-        setTodos((prev) => [...prev, newTodo]);
+        setTodos((prev) => {
+            const newState =  [...prev, newTodo]
+            storage.save(STORAGE_TODOS_KEY, newState)
+            return newState;
+        });
     };
 
     const onToggleTodo = (id) => {
@@ -52,6 +61,7 @@ export const App = () => {
         });
 
         setTodos(updatedTodos);
+        storage.save(STORAGE_TODOS_KEY, updatedTodos)
     };
 
     const onToggleFavorite = (id) => {
@@ -60,11 +70,13 @@ export const App = () => {
         });
 
         setTodos(updatedTodos);
+        storage.save(STORAGE_TODOS_KEY, updatedTodos)
     };
 
     const onDeleteTodo = (id) => {
         const filtered = todos.filter(todo => todo.id !== id);
         setTodos(filtered);
+        storage.save(STORAGE_TODOS_KEY, filtered)
     };
 
     return (
