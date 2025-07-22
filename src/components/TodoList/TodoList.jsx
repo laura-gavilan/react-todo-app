@@ -1,3 +1,4 @@
+import { TodoItem } from "../TodoItem/TodoItem";
 import "./TodoList.css"
 
 export const TodoList = (props) => {
@@ -9,9 +10,10 @@ export const TodoList = (props) => {
 
             {props.todos.map(todo => {
                 return (
-                    <div className="todo" key={todo.id}>
-                        {todo.text}
-                    </div>
+                    <TodoItem  
+                    key={todo.id} 
+                    toggleTodo={props.toggleTodo} 
+                    todo={todo} />
                 )
             })}
         </div>
