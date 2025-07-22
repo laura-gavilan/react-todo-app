@@ -3,6 +3,7 @@ import "./App.css";
 import { Navigation } from "./components/Navigation/Navigation";
 import { Tabs } from "./components/Navigation/Tabs";
 import { TodoForm } from "./components/TodoForm/TodoForm";
+import { TodoList } from "./components/TodoList/TodoList";
 
 
 export const App = () => {
@@ -18,7 +19,7 @@ export const App = () => {
             <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
             <h1 className="app-title">Mi lista de tareas</h1>
 
-            {activeTab === Tabs.TODOS && <h2>Pestaña: Todos</h2>}
+            {activeTab === Tabs.TODOS && <TodoList/>}
 
             {activeTab === Tabs.FAVORITES && <h2>Pestaña: Favoritos</h2>}
 
