@@ -4,6 +4,7 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { Tabs } from "./components/Navigation/Tabs";
 import { TodoForm } from "./components/TodoForm/TodoForm";
 import { TodoList } from "./components/TodoList/TodoList";
+import { Favorites } from "./components/Favorites/Favorites";
 
 const INITIAL_TODOS = [
     {
@@ -71,14 +72,20 @@ export const App = () => {
             <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
             <h1 className="app-title">Mi lista de tareas</h1>
 
-            {activeTab === Tabs.TODOS && <TodoList
-                todos={todos}
-                onToggleTodo={onToggleTodo}
-                onDeleteTodo={onDeleteTodo}
-                onToggleFavorite={onToggleFavorite}
-            />}
+            {activeTab === Tabs.TODOS &&
+                <TodoList
+                    todos={todos}
+                    onToggleTodo={onToggleTodo}
+                    onDeleteTodo={onDeleteTodo}
+                    onToggleFavorite={onToggleFavorite}
+                />}
 
-            {activeTab === Tabs.FAVORITES && <h2>Pestaña: Favoritos</h2>}
+            {activeTab === Tabs.FAVORITES &&
+                <Favorites
+                    todos={todos}
+                    onToggleTodo={onToggleTodo}
+                    onDeleteTodo={onDeleteTodo}
+                    onToggleFavorite={onToggleFavorite} />}
 
             {activeTab === Tabs.NEW_TODO && <TodoForm addTodo={addTodo} />}
         </div>
