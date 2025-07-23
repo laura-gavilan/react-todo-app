@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./App.css";
+import "./styles/responsive.css"
 import { Navigation } from "./components/Navigation/Navigation";
 import { Tabs } from "./components/Navigation/Tabs";
 import { TodoForm } from "./components/TodoForm/TodoForm";
 import { TodoList } from "./components/TodoList/TodoList";
 import { Favorites } from "./components/Favorites/Favorites";
 import { storage } from "./helpers/storage";
+import { ResetTodos } from './components/ResetTodos/ResetTodos';
 
 const STORAGE_TODOS_KEY = "todos";
 
@@ -79,6 +81,11 @@ export const App = () => {
         storage.save(STORAGE_TODOS_KEY, filtered)
     };
 
+    const resetTodos = () => {
+        setTodos([]);
+        storage.save(STORAGE_TODOS_KEY, []);
+    }
+
     return (
         <div className="app-container">
             <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -100,6 +107,8 @@ export const App = () => {
                     onToggleFavorite={onToggleFavorite} />}
 
             {activeTab === Tabs.NEW_TODO && <TodoForm addTodo={addTodo} />}
+
+            <ResetTodos onReset={resetTodos} />
         </div>
     );
 };
